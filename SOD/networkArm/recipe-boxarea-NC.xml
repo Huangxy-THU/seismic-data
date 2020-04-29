@@ -28,17 +28,17 @@
         </fdsnStation>
 
         <!-- network subsetters -->
-		<networkOR>
-			<networkCode>BK</networkCode>
+        <networkOR>
+            <networkCode>BK</networkCode>
         </networkOR>
 
         <!-- station subsetters -->
 
         <!-- channel subsetters -->
-		<channelOR>
-			<channelCode>BHE</channelCode>
-			<channelCode>BHN</channelCode>
-			<channelCode>BHZ</channelCode>
+        <channelOR>
+            <channelCode>BHE</channelCode>
+            <channelCode>BHN</channelCode>
+            <channelCode>BHZ</channelCode>
         </channelOR>
 
         <sacPoleZeroWriter/>  <!-- print channel poles and zeros to file -->

@@ -13,33 +13,33 @@
         <fdsnStation/>
 
         <!-- network subsetters -->
-		<networkOR>
-			<networkCode>MM</networkCode>
-			<networkCode>TM</networkCode>
+        <networkOR>
+            <networkCode>MM</networkCode>
+            <networkCode>TM</networkCode>
         </networkOR>
 
         <!-- station subsetters -->
-		<stationOR>
-			<stationCode>HKA</stationCode>
-			<stationCode>KTA</stationCode>
-			<stationCode>KTN</stationCode>
-			<stationCode>MDY</stationCode>
-			<stationCode>NGU</stationCode>
-			<stationCode>SIM</stationCode>
-			<stationCode>TGI</stationCode>
-			<stationCode>TMU</stationCode>
-			<stationCode>YGN</stationCode>
+        <stationOR>
+            <stationCode>HKA</stationCode>
+            <stationCode>KTA</stationCode>
+            <stationCode>KTN</stationCode>
+            <stationCode>MDY</stationCode>
+            <stationCode>NGU</stationCode>
+            <stationCode>SIM</stationCode>
+            <stationCode>TGI</stationCode>
+            <stationCode>TMU</stationCode>
+            <stationCode>YGN</stationCode>
             <stationCode>CMAI</stationCode>
-			<stationCode>CMMT</stationCode>
+            <stationCode>CMMT</stationCode>
             <stationCode>CRAI</stationCode>
             <stationCode>MHIT</stationCode>
             <stationCode>PBKT</stationCode>
-		</stationOR>
+        </stationOR>
 
         <!-- channel subsetters -->
-		<channelOR>
-			<channelCode>H??</channelCode>
-			<channelCode>B??</channelCode>
+        <channelOR>
+            <channelCode>H??</channelCode>
+            <channelCode>B??</channelCode>
         </channelOR>
 
         <sacPoleZeroWriter/>  <!-- print channel poles and zeros to file -->
