@@ -116,7 +116,7 @@
         <!-- write raw data -->
         <sacWriter>
             <workingDir>seismograms-raw</workingDir>
-            <location>${event.getTime("yyyyMMddHHmmss")}/${network.code}.${station.code}.${site.code}.${channel.code}.SAC</location>
+            <location>${event.getTime("yyyyMMddHHmmssSSS")}/${network.code}.${station.code}.${site.code}.${channel.code}.SAC</location>
             <!-- Set event depth in km instead of meters -->
             <sacHeaderScript type="jython">
                 from edu.sc.seis.seisFile.sac import SacConstants
@@ -141,7 +141,7 @@
         <!-- write data with response removed -->
         <sacWriter>
             <workingDir>seismograms</workingDir>
-            <location>${event.getTime("yyyyMMddHHmmss")}/${network.code}.${station.code}.${site.code}.${channel.code}.SAC</location>
+            <location>${event.getTime("yyyyMMddHHmmssSSS")}/${network.code}.${station.code}.${site.code}.${channel.code}.SAC</location>
             <!-- Set event depth in km instead of meters -->
             <sacHeaderScript type="jython">
                 from edu.sc.seis.seisFile.sac import SacConstants
