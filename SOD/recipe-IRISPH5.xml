@@ -40,8 +40,8 @@
         <!-- networkSource subsetters -->
         <!-- I use fdsnStation, but change fdsnwsPath to ph5ws -->
         <fdsnStation>
-            <includeAvailability>false</includeAvailability>
             <fdsnwsPath>ph5ws</fdsnwsPath>
+            <includeAvailability>false</includeAvailability>
         </fdsnStation>
 
         <!-- network subsetters -->
