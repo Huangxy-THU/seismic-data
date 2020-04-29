@@ -49,6 +49,8 @@ my $band     = "H";      # only broadband
 -B: station band; E=extremely short-period, H=broadband, L=long-period
 
 Examples
+* To see the command line options, use
+./ExtractWaveform.pl
 * To extract broadband data with -50 s before and 150 s after first P, use
 ./ExtractWaveform.pl -C../catalog/catalog.dat -S../station/MMEOS-coord.dat -Mmseed_dir -O../waveform -R1 -T-50,150 -BH
 * To extract both broadband and extremely short-period, use
