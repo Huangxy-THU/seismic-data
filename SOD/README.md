@@ -4,15 +4,41 @@ The fold contains all the SOD recipes I used to download seismic data from some 
 You may check all the [FDSN web service supporting Data Centers](https://www.fdsn.org/webservices/). Sometimes you can use the web services directly via [wget](https://www.gnu.org/software/wget/) or [curl](https://curl.haxx.se/). Some of them may also have their own web services, which could be useful.
 
 
-## WaveformArm
+## eventArm
 
-Those recipes are used to download seismic waveforms.
+Those recipes only contain the eventArm, which can be used to download the catalog.
+
+- recipe-origin-mag-dep-boxarea.xml : Query catalog from [USGS FDSN Event web service](https://earthquake.usgs.gov/fdsnws/event/1/), within a box area.
+
+- recipe-origin-mag-dep-boxarea-more.xml : Query catalog with more conditions.
+
+- recipe-origin-mag-dep-pointdist.xml : Query catalog within given distance range of the given lat & lon.
+
+- recipe-origin-mag-dep-boxarea-NC.xml : Query catalog from [Northern California Earthquake Data Center FDSN web service](http://service.ncedc.org/).
+
+
+## networkArm
+
+Those recipes only contain the networkArm, which can be used to search stations.
+
+- recipe-fixed-net-sta.xml : Query seismic stations from [IRIS-DMC FDSN web service](http://service.iris.edu/fdsnws/), with specic networks and stations.
+
+- recipe-boxarea.xml : Query seismic stations within a box area.
+
+- recipe-pointdist.xml : Query seismic stations within given distance range of the given lat & lon.
+
+- recipe-boxarea-NC.xml : Query seismic stations from [Northern California Earthquake Data Center FDSN web service](http://service.ncedc.org/).
+
+
+## waveformArm
+
+Those recipes contain the three Arms, which are used to download seismic waveforms.
 
 - recipe-csvEvent-fixedNet.xml : Query seismic waveforms from [IRIS-DMC FDSN web service](http://service.iris.edu/fdsnws/). The catalog is already downloaded using other mehtod, and the stations are set explicitly.
 
 - recipe-csvEvent-fixedNet-phase.xml : same as recipe-csvEvent-fixedNet.xml except that a reference phase is used to limit the time window.
 
-- recipe-continous.xml : Query continous seismic waveforms from [IRIS-DMC FDSN web service](http://service.iris.edu/fdsnws/).
+- recipe-continous.xml : Query continous seismic waveforms from [IRIS-DMC FDSN web service](http://service.iris.edu/fdsnws/). I set the output format to be miniseed.
 
 - recipe-IRISPH5.xml : Query seismic waveforms from [IRIS-DMC's PH5 FDSN web service](http://service.iris.edu/ph5ws/).
 
