@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!--****************************************************************
+<!-- ****************************************************************
 * SOD recipe used to download seismic waveforms
 *
 * History
@@ -94,9 +94,9 @@
         <someCoverage/>
 
 
-        <!-- *****************************************
+        <!-- ****************************************************
               The following are all seismogramProcess subsetters
-             ***************************************** -->
+             **************************************************** -->
         <!-- checks after asking for the seismograms that they really exist. -->
         <someDataCoverage/>
 
