@@ -6,8 +6,8 @@ use strict;
 use warnings;
 use File::Basename;
 
-@ARGV == 11 or die "perl $0 ev_dir start end origin evla evlo evdp ref_flag EOSsta mseed_dir band\n";
-my ($ev_dir,$start,$end,$origin,$evla,$evlo,$evdp,$ref_flag,$EOSsta,$mseed_dir,$band) = @ARGV;
+@ARGV == 12 or die "perl $0 ev_dir start end origin evla evlo evdp ref_phase model EOSsta mseed_dir band\n";
+my ($ev_dir,$start,$end,$origin,$evla,$evlo,$evdp,$ref_phase,$model,$EOSsta,$mseed_dir,$band) = @ARGV;
 # ev_dir   : data directory
 # start    : time in second before the reference time
 # end      : time in second after the reference time
@@ -15,8 +15,11 @@ my ($ev_dir,$start,$end,$origin,$evla,$evlo,$evdp,$ref_flag,$EOSsta,$mseed_dir,$
 # evla     : event latitude
 # evlo     : event longitude
 # evdp     : event depth
-# ref_flag : 0 -->> reference is origin time
-#            1 -->> reference is first P
+# ref_phase:   0 -->> reference is origin time
+#            ttp -->> reference is first P
+#            tts -->> reference is first S
+#             Pn -->> reference is Pn wave
+# model    : Earth model used in TauP
 # EOSsta   : station location file
 # mseed_dir: miniseed directory
 # band     : station band code
@@ -27,11 +30,6 @@ print STDERR "\na. Extract sac files from miniseed\n";
 # check work directory and include time.pm
 my $workdir = `pwd`; chomp $workdir;
 require "$workdir/time.pm";
-
-
-# first arrival
-my $model = "ak135"; # model
-my $phase = "ttp";   # calculate P first arrival
 
 
 # read stations
@@ -50,7 +48,7 @@ my (@years, @ydays, @hours);
 
 
 # reference is origin time
-if ($ref_flag == 0) {
+if ($ref_phase eq "0") {
     my ($yday_start,$year_start,$mon_start,$day_start,$hour_start)
                                      = split " ", &find_time($origin, $start);
     @years = ($year_start);
@@ -89,12 +87,12 @@ for (my $i = 0; $i < @stations; $i++) {
     my ($stla, $stlo, $stel) = split "_", $sta_coords{$stations[$i]};
 
     ## reference is first-arrival instead of origin time
-    if ($ref_flag == 1) {
+    if ($ref_phase ne "0") {
         my ($gcarc) = split " ", `distaz $stla $stlo $evla $evlo`; chomp $gcarc;
         print STDERR "$sta: $stla $stlo $evla $evlo $evdp $gcarc\n";
 
         ### calculate first arrival
-        my @ttimes = `perl $workdir/CalTravelTime.pl $origin $evdp $gcarc $model $phase`; chomp @ttimes;
+        my @ttimes = `perl $workdir/CalTravelTime.pl $origin $evdp $gcarc $model $ref_phase`; chomp @ttimes;
         my ($first_arrival, $ph) = split " ", $ttimes[0];
         if ($first_arrival ne "undef") {
             my $start_new = $first_arrival + $start;

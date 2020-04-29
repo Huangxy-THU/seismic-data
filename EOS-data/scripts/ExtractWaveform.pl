@@ -5,7 +5,7 @@
 #
 # History
 #   2019        Jiayuan Yao  Initial coding
-#   04/28/2020  Jiayuan Yao  First-P can also be the reference
+#   04/28/2020  Jiayuan Yao  First-P and -S can also be the reference
 #   04/29/2020  Jiayuan Yao  Include long- and short-period bands,
 #                            any length data can be extracted now
 #
@@ -28,8 +28,9 @@ my $mseed_dir= "/home/core-man/EOS-Myanmar/mseed";
                                               # miniseed directory (full path)
 my $sac_dir  = "../waveform";                 # sac data directory
 
-my $ref_flag = 1;        # reference time flag
-                         # 0=origin time; 1=first P; 2=first S
+my $ref_phase= 0;        # reference phase
+                         # 0=origin time; ttp=first P; tts=first S; Pn=Pn wave; ...
+my $model    = "ak135";  # model used in TauP to calculate first arrival
 my $start    = -50;      # time in second before reference time
 my $end      = 150;      # time in second after  reference time
 
@@ -39,12 +40,13 @@ my $band     = "H";      # only broadband
                          # H: broadband  L: long-period  E: extremely short-period (nodes)
 
 # command line options
-@ARGV > 1 or die "Usage: ExtractWaveform.pl -Ccatalog -SEOSsta -Mmseed_dir -Osac_dir -Rref_flag -Tstart,end -Bband1[,band2[,band3[,...]]]
+@ARGV > 1 or die "Usage: ExtractWaveform.pl -Ccatalog -SEOSsta -Mmseed_dir -Osac_dir -Rref_phase -Emodel -Tstart,end -Bband1[,band2[,band3[,...]]]
 -C: catalog
 -S: EOS station locations
 -M: miniseed data directory (must be full path, e.g., /home/core-man/mseed)
 -O: output sac data directory
--R: reference time flag; 0=origin time; 1=first P; 2=first S
+-R: reference phase; 0=origin time; ttp=first P; tts=first S; Pn=Pn wave; PKP=PKP wave; ...
+-E: Earth model used in TauP to calculate first arrival, e.g., ak135,iasp91,prem
 -T: time in second before (start) and after (end) the reference
 -B: station band; E=extremely short-period, H=broadband, L=long-period
 
@@ -52,9 +54,11 @@ Examples
 * To see the command line options, use
 ./ExtractWaveform.pl
 * To extract broadband data with -50 s before and 150 s after first P, use
-./ExtractWaveform.pl -C../catalog/catalog.dat -S../station/MMEOS-coord.dat -Mmseed_dir -O../waveform -R1 -T-50,150 -BH
-* To extract both broadband and extremely short-period, use
-./ExtractWaveform.pl -C../catalog/catalog.dat -S../station/MMEOS-coord.dat -Mmseed_dir -O../waveform -R1 -T-50,150 -BH,E\n";
+./ExtractWaveform.pl -C../catalog/catalog.dat -S../station/MMEOS-coord.dat -M/home/core-man/mseed -O../waveform -Rttp -Eak135 -T-50,150 -BH
+* To extract extremely short-period data, use
+./ExtractWaveform.pl -C../catalog/catalog.dat -S../station/N1EOS-coord.dat -M/home/core-man/mseed -O../waveform -Rttp -Eak135 -T-50,150 -BE
+* To extract both broadband and extremely short-period data, use
+./ExtractWaveform.pl -C../catalog/catalog.dat -S../station/EOS-coord.dat -M/home/core-man/mseed -O../waveform -Rttp -Eak135 -T-50,150 -BH,E\n";
 
 
 foreach (grep(/^-/,@ARGV)) {
@@ -69,7 +73,9 @@ foreach (grep(/^-/,@ARGV)) {
    } elsif ($opt eq "O") {
      $sac_dir = $value[0];
    } elsif ($opt eq "R") {
-     $ref_flag = $value[0];
+     $ref_phase = $value[0];
+   } elsif ($opt eq "E") {
+     $model = $value[0];
    } elsif ($opt eq "T") {
      $start = $value[0];
      $end   = $value[1];
@@ -80,7 +86,10 @@ foreach (grep(/^-/,@ARGV)) {
      exit(0);
    }
 }
-
+if (! (-d $mseed_dir) ) {
+    print STDERR "ERROR: miniseed directory does not exists.\nPlease use a full path for the miniseed directory in option -M.\n";
+    exit(0);
+}
 
 
 ######## begin to extract seismic data ###########
@@ -116,7 +125,7 @@ for (my $i = 0; $i < @eves; $i++) {
     print STDERR "Event $i: $year $mon $day ($yday) $hour $min $sec $msec\n";
 
     # extract sac files from miniseed
-    `perl extract-sac.pl $ev_dir $start $end $origin $evla $evlo $evdp $ref_flag $EOSsta $mseed_dir $band`;
+    `perl extract-sac.pl $ev_dir $start $end $origin $evla $evlo $evdp $ref_phase $model $EOSsta $mseed_dir $band`;
 
     # merge data at the same station
     `perl merge.pl $ev_dir`;
@@ -131,7 +140,7 @@ for (my $i = 0; $i < @eves; $i++) {
     `perl WriteStaInfo.pl $ev_dir $EOSsta`;
 
     # cut seismic waveforms to the right time window
-    `perl CutWF.pl $ev_dir $start $end $origin $ref_flag`;
+    `perl CutWF.pl $ev_dir $start $end $origin $ref_phase $model`;
 
     # remove empty event
     `rmdir --ignore-fail-on-non-empty $ev_dir`;

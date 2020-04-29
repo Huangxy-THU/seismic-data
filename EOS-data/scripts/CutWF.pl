@@ -6,21 +6,19 @@
 use strict;
 use warnings;
 
-@ARGV == 5 || die "Usage: perl $0 dirname start end origin ref_flag\n";
-my ($dir, $start, $end, $origin, $ref_flag) = @ARGV;
+@ARGV == 6 || die "Usage: perl $0 dirname start end origin ref_phase model\n";
+my ($dir,$start,$end,$origin,$ref_phase,$model) = @ARGV;
 # dir   : data directory
 # start : time in second before the reference time
 # end   : time in second after the reference time
 # origin: origin time used in CalTravelTime.pl
-# ref_flag : 0 -->> reference is origin time
-#            1 -->> reference is first P
+# ref_phase:   0 -->> reference is origin time
+#            ttp -->> reference is first P
+#            tts -->> reference is first S
+#             Pn -->> reference is Pn wave
+# model    : Earth model used in TauP
 
 print STDERR "\nf. Cut Seismic Waveforms\n";
-
-
-# first arrival
-my $model = "ak135";  # model
-my $phase = "ttp";    # calculate P first arrival
 
 
 my $workdir = `pwd`; chomp $workdir;
@@ -40,14 +38,14 @@ foreach (glob "*.SAC") {
     chomp;
 
     # reference is first-arrival instead of origin time
-    if ($ref_flag == 1) {
+    if ($ref_phase ne "0") {
         my (undef,$stla,$stlo,$evla,$evlo,$evdp) = split " ",
                              `saclst stla stlo evla evlo evdp f $_`;
         my ($gcarc) = split " ", `distaz $stla $stlo $evla $evlo`; chomp $gcarc;
         print STDERR "$_: $stla $stlo $evla $evlo $evdp $gcarc\n";
 
         # calculate first arrival
-        my @ttimes = `perl $workdir/CalTravelTime.pl $origin $evdp $gcarc $model $phase`; chomp @ttimes;
+        my @ttimes = `perl $workdir/CalTravelTime.pl $origin $evdp $gcarc $model $ref_phase`; chomp @ttimes;
         ($first_arrival, $ph) = split " ", $ttimes[0];
         print STDERR "$first_arrival $ph\n";
         next if ($first_arrival eq "undef");

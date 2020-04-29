@@ -1,5 +1,5 @@
 
-## EOS station
+## EOS station (from EOS data array)
 
 - all seismic recorders are Quantera Q330S+, sample at 100 sps
 - seismometer is either Streckeisen STS 2.5 or Nanometrics Trillium 120P
@@ -11,6 +11,7 @@
 
 ## Station coordinates
 
-- MMEOS-coord.dat :  EOS-Mynamr broadband station coordinates
-- N1EOS-coord.dat :  EOS-Myanmar Zland node coordinates
+- MMEOS-coord.dat : EOS-Mynamr broadband station coordinates from Xin Wang in 2018
+- N1EOS-coord.dat : EOS-Myanmar Zland node coordinates from Hongyu Zeng on Apr. 28 2020
+- EOS-coord.dat   : Both broadband and node stations
 
