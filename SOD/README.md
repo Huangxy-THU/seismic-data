@@ -8,7 +8,7 @@ You may check all the [FDSN web service supporting Data Centers](https://www.fds
 
 Those recipes only contain the eventArm, which can be used to download the catalog.
 
-- recipe-origin-mag-dep-boxarea.xml : Query catalog from [USGS FDSN Event web service](https://earthquake.usgs.gov/fdsnws/event/1/), within a box area.
+- [recipe-origin-mag-dep-boxarea.xml](eventArm/recipe-origin-mag-dep-boxarea.xml) : Query catalog from [USGS FDSN Event web service](https://earthquake.usgs.gov/fdsnws/event/1/), within a box area.
 
 - recipe-origin-mag-dep-boxarea-more.xml : Query catalog with more conditions.
 
