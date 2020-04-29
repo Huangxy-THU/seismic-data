@@ -10,44 +10,44 @@ Those recipes only contain the eventArm, which can be used to download the catal
 
 - [recipe-origin-mag-dep-boxarea.xml](eventArm/recipe-origin-mag-dep-boxarea.xml) : Query catalog from [USGS FDSN Event web service](https://earthquake.usgs.gov/fdsnws/event/1/), within a box area.
 
-- recipe-origin-mag-dep-boxarea-more.xml : Query catalog with more conditions.
+- [recipe-origin-mag-dep-boxarea-more.xml](eventArm/recipe-origin-mag-dep-boxarea-more.xml) : Query catalog with more conditions.
 
-- recipe-origin-mag-dep-pointdist.xml : Query catalog within given distance range of the given lat & lon.
+- [recipe-origin-mag-dep-pointdist.xml](eventArm/recipe-origin-mag-dep-pointdist.xml) : Query catalog within given distance range of the given lat & lon.
 
-- recipe-origin-mag-dep-boxarea-NC.xml : Query catalog from [Northern California Earthquake Data Center FDSN web service](http://service.ncedc.org/).
+- [recipe-origin-mag-dep-boxarea-NC.xml](eventArm/recipe-origin-mag-dep-boxarea-NC.xml) : Query catalog from [Northern California Earthquake Data Center FDSN web service](http://service.ncedc.org/).
 
 
 ## networkArm
 
 Those recipes only contain the networkArm, which can be used to search stations.
 
-- recipe-fixed-net-sta.xml : Query seismic stations from [IRIS-DMC FDSN web service](http://service.iris.edu/fdsnws/), with specic networks and stations.
+- [recipe-fixed-net-sta.xml](networkArm/recipe-fixed-net-sta.xml) : Query seismic stations from [IRIS-DMC FDSN web service](http://service.iris.edu/fdsnws/), with specic networks and stations.
 
-- recipe-boxarea.xml : Query seismic stations within a box area.
+- [recipe-boxarea.xml](networkArm/recipe-boxarea.xml) : Query seismic stations within a box area.
 
-- recipe-pointdist.xml : Query seismic stations within given distance range of the given lat & lon.
+- [recipe-pointdist.xml](networkArm/recipe-pointdist.xml) : Query seismic stations within given distance range of the given lat & lon.
 
-- recipe-boxarea-NC.xml : Query seismic stations from [Northern California Earthquake Data Center FDSN web service](http://service.ncedc.org/).
+- [recipe-boxarea-NC.xml](networkArm/recipe-boxarea-NC.xml) : Query seismic stations from [Northern California Earthquake Data Center FDSN web service](http://service.ncedc.org/).
 
 
 ## waveformArm
 
 Those recipes contain the three Arms, which are used to download seismic waveforms.
 
-- recipe-csvEvent-fixedNet.xml : Query seismic waveforms from [IRIS-DMC FDSN web service](http://service.iris.edu/fdsnws/). The catalog is already downloaded using other mehtod, and the stations are set explicitly.
+- [recipe-csvEvent-fixedNet.xml](waveformArm/recipe-csvEvent-fixedNet.xml) : Query seismic waveforms from [IRIS-DMC FDSN web service](http://service.iris.edu/fdsnws/). The catalog is already downloaded using other mehtod, and the stations are set explicitly.
 
-- recipe-csvEvent-fixedNet-phase.xml : same as recipe-csvEvent-fixedNet.xml except that a reference phase is used to limit the time window.
+- [recipe-csvEvent-fixedNet-phase.xml](waveformArm/recipe-csvEvent-fixedNet-phase.xml) : same as [recipe-csvEvent-fixedNet.xml](waveformArm/) except that a reference phase is used to limit the time window.
 
-- recipe-continous.xml : Query continous seismic waveforms from [IRIS-DMC FDSN web service](http://service.iris.edu/fdsnws/). I set the output format to be miniseed.
+- [recipe-continous.xml](waveformArm/recipe-continous.xml) : Query continous seismic waveforms from [IRIS-DMC FDSN web service](http://service.iris.edu/fdsnws/). I set the output format to be miniseed.
 
-- recipe-IRISPH5.xml : Query seismic waveforms from [IRIS-DMC's PH5 FDSN web service](http://service.iris.edu/ph5ws/).
+- [recipe-IRISPH5.xml](waveformArm/recipe-IRISPH5.xml) : Query seismic waveforms from [IRIS-DMC's PH5 FDSN web service](http://service.iris.edu/ph5ws/).
 
-- recipe-SC.xml      : Query seismic waveforms from [Southern California Earthquake Data Center FDSN web service](https://service.scedc.caltech.edu/)
-- recipe-NC.xml      : Query seismic waveforms from [Northern California Earthquake Data Center FDSN web service](http://service.ncedc.org/)
+- [recipe-SC.xml](waveformArm/recipe-SC.xml)      : Query seismic waveforms from [Southern California Earthquake Data Center FDSN web service](https://service.scedc.caltech.edu/)
+- [recipe-NC.xml](waveformArm/recipe-NC.xml)      : Query seismic waveforms from [Northern California Earthquake Data Center FDSN web service](http://service.ncedc.org/)
 
-- recipe-GEOFON.xml  : Query seismic waveforms from [GEOFON FDSN web service](http://geofon.gfz-potsdam.de/fdsnws/).
+- [recipe-GEOFON.xml](waveformArm/recipe-GEOFON.xml)  : Query seismic waveforms from [GEOFON FDSN web service](http://geofon.gfz-potsdam.de/fdsnws/).
 
-- recipe-ORFEUS.xml  : Query seismic waveforms from [ORFEUS FDSN web service](http://www.orfeus-eu.org/fdsnws/)
+- [recipe-ORFEUS.xml](waveformArm/recipe-ORFEUS.xml)  : Query seismic waveforms from [ORFEUS FDSN web service](http://www.orfeus-eu.org/fdsnws/)
 
 
 
