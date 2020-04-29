@@ -16,7 +16,7 @@
         <!-- eventSource subsetters -->
         <!-- I use CSVEventSource, with events in a text file -->
     	<CSVEventSource>
-			<filename>events.csv</filename>
+            <filename>events.csv</filename>
         </CSVEventSource>
 
         <!-- origin subsetters -->
@@ -31,33 +31,33 @@
         <fdsnStation/>
 
         <!-- network subsetters -->
-		<networkOR>
-			<networkCode>MM</networkCode>
-			<networkCode>TM</networkCode>
+        <networkOR>
+            <networkCode>MM</networkCode>
+            <networkCode>TM</networkCode>
         </networkOR>
 
         <!-- station subsetters -->
-		<stationOR>
-			<stationCode>HKA</stationCode>
-			<stationCode>KTA</stationCode>
-			<stationCode>KTN</stationCode>
-			<stationCode>MDY</stationCode>
-			<stationCode>NGU</stationCode>
-			<stationCode>SIM</stationCode>
-			<stationCode>TGI</stationCode>
-			<stationCode>TMU</stationCode>
-			<stationCode>YGN</stationCode>
+        <stationOR>
+            <stationCode>HKA</stationCode>
+            <stationCode>KTA</stationCode>
+            <stationCode>KTN</stationCode>
+            <stationCode>MDY</stationCode>
+            <stationCode>NGU</stationCode>
+            <stationCode>SIM</stationCode>
+            <stationCode>TGI</stationCode>
+            <stationCode>TMU</stationCode>
+            <stationCode>YGN</stationCode>
             <stationCode>CMAI</stationCode>
-			<stationCode>CMMT</stationCode>
+            <stationCode>CMMT</stationCode>
             <stationCode>CRAI</stationCode>
             <stationCode>MHIT</stationCode>
             <stationCode>PBKT</stationCode>
-		</stationOR>
+        </stationOR>
 
         <!-- channel subsetters -->
-		<channelOR>
-			<channelCode>H??</channelCode>
-			<channelCode>B??</channelCode>
+        <channelOR>
+            <channelCode>H??</channelCode>
+            <channelCode>B??</channelCode>
         </channelOR>
         <sacPoleZeroWriter/>  <!-- print channel poles and zeros to file -->
         <responseWriter/>     <!-- print channel responeses to file -->
@@ -74,7 +74,7 @@
 
         <!-- requestGenerator subsetters -->
     	<originOffsetRequest>
-	    	<beginOffset>
+            <beginOffset>
             	<unit>MINUTE</unit>
             	<value>-10</value>
             </beginOffset>
@@ -101,16 +101,16 @@
         <someDataCoverage/>
 
         <!-- merge, deal with overlap and gap -->
-		<merge/>
-		<collapseOverlaps/>
-		<gapFill>
-			<zeroFill/>
+        <merge/>
+        <collapseOverlaps/>
+        <gapFill>
+            <zeroFill/>
         </gapFill>
         <noDataGaps/>
 
         <!-- basic data processing -->
-		<rMean/>
-		<rTrend/>
+        <rMean/>
+        <rTrend/>
         <taper/>
 
         <!-- write raw data -->
@@ -126,7 +126,7 @@
         </sacWriter>
     	<printlineSeismogramProcess/>
     	<legacyExecute>
-    		<command>echo Sod saved this file</command>
+            <command>echo Sod saved this file</command>
     	</legacyExecute>
 
         <!-- remove response, it should be the same as runing the SAC command:
@@ -151,7 +151,7 @@
         </sacWriter>
     	<printlineSeismogramProcess/>
     	<legacyExecute>
-    		<command>echo Sod saved this file</command>
+            <command>echo Sod saved this file</command>
     	</legacyExecute>
   	</waveformArm>
 </sod>
