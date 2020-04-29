@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!-- ****************************************************************
-* SOD recipe used to download seismic waveforms from IRIS-DMC PH5
-* web service (http://service.iris.edu/ph5ws/)
+* SOD recipe used to download seismic waveforms from IRIS-DMC's PH5
+* FDSN web service (http://service.iris.edu/ph5ws/)
 *
 * History
 *  04/29/2020   Jiayuan Yao   Initial coding
