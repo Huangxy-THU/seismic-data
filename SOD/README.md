@@ -1,12 +1,14 @@
 
-The fold contains all the SOD recipes I used to download seismic data from some Data Centers, e.g., [IRIS-DMC](https://ds.iris.edu/ds/nodes/dmc/).
+The fold contains all the SOD recipes I used to download seismic data from some Data Centers, e.g., [IRIS-DMC](https://ds.iris.edu/ds/nodes/dmc/). Please refer to [FDSN web service](https://www.fdsn.org/webservices/) to see the supporting Data Centers and their hosts.
+
 
 ## Recipes
 
 - recipe-csvEvent-fixedNet.xml : the catalog is already downloaded using other mehtod, and the stations are set explicitly.
 
-- recipe-IRISPH5.xml           : Query seismic waveforms from IRIS-DMC PH5 web service.
+- recipe-IRISPH5.xml : Query seismic waveforms from [IRIS-DMC's PH5 FDSN web service](http://service.iris.edu/ph5ws/).
 
+- recipe-GEOFON.xml  : Query seismic waveforms from [GEOFON FDSN web service](http://geofon.gfz-potsdam.de/fdsnws/).
 
 
 
